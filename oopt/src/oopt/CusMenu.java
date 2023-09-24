@@ -71,7 +71,7 @@ public class CusMenu {
     private static void CusDisplayAllProduct(){
             custProdMenuHeading();
             CusProduct();
-            System.out.printf("╚═══════════╩═══════════════════════════╩═══════════════╩═══════════════╝\nPress enter to continue..."); 
+            System.out.printf("╚═══════════╩═══════════════════════════╩═══════════════╩═══════════════╝\nPress enter to continue...");
             new java.util.Scanner(System.in).nextLine();
     }
     
@@ -121,8 +121,51 @@ public class CusMenu {
     
     
     private static void cusSearchProductModule(){
-    
+        int choice;
+        do{
+        System.out.printf("Search Page\nCategory List\n1. Stationery\n2. Sport\n3. Furniture\n4. Food\n5. Kitchen\nEnter number to search specify product > ");
+        choice = sc.nextInt();
+        }while(!Validation.CheckMinMax(choice, 1, 5));
+        searchProductsByCategory(choice);
+        
+        
     }
+    
+    private static void searchProductsByCategory(int categoryChoice) {
+    String category;
+
+    switch (categoryChoice) {
+        case 1 -> category = "stationery";
+        case 2 -> category = "sport";
+        case 3 -> category = "furniture";
+        case 4 -> category = "food";
+        case 5 -> category = "kitchen";
+        default -> {
+            return; 
+            }
+    }
+
+    System.out.println("Products in the " + category + " category:");
+    String CusProductFile = "src/data1/product.txt"; 
+    try (BufferedReader br = new BufferedReader(new FileReader(CusProductFile))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            String[] parts = line.split("\\|");
+            if (parts.length == 6 && parts[2].trim().equalsIgnoreCase(category)) {
+                // Display product detail
+                String productId = parts[0].trim();
+                String productName = parts[1].trim();
+                double price = Double.parseDouble(parts[4].trim());
+
+                System.out.printf("Product ID: %-8s | Product Name: %-24s | Price: %.2f%n", productId, productName, price);
+            }
+        }
+    } catch (IOException e) {
+        System.out.println("Error reading the file: " + e.getMessage());
+    }
+    System.out.printf("\nPress enter to continue...");
+            new java.util.Scanner(System.in).nextLine();
+}
  
     
     private static void cusPurchaseModule(){
@@ -132,6 +175,7 @@ public class CusMenu {
         int inputProdQty;
         int addMoreFlag = 0;
         int choice;
+        System.out.printf("Order Page\n");
         do{
            do {
                   System.out.printf("Enter ProductID (e.g., P1001) to add to cart > ");
@@ -145,7 +189,8 @@ public class CusMenu {
            do{
            System.out.printf("Enter Quantity > ");
            inputProdQty = sc.nextInt();
-           }while(inputProdQty <= 0 );
+           sc.nextLine();
+           }while(inputProdQty < 0 );
            validProdQty = Validation.checkQuantity(inputProdID,inputProdQty);
            if(validProdQty){
               //addToCart(); (renhao)
