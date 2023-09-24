@@ -37,43 +37,7 @@ public class Oopt {
     
         FIrstMenu.menu1();
 
-//        int cusMenuSelect;
-//        while (true) {
-//            System.out.printf("\nMain Menu\n1. Customer Details\n2. Product Menu\n3. Cart\n4. Checkout\n5. Exit\n\nEnter your choice > "); // 1 > View & Modify CusDetails ;2 > View ProdMenu,Add Prod ;3 > Show & Modify Cart;4 > Make payment;5 > exitprogram/logout
-//            cusMenuSelect = sc.nextInt();
-//            switch (cusMenuSelect) {
-//   //             case 1 -> CustomerDetails();
-//               case 2 -> CusProductMenu();
-////                case 3 -> {
-////                }
-////                case 4 -> {
-////                }
-////                case 5 -> Menu.mainMenu();
-//                default ->
-//                    System.out.println("\nInvalid Input! Pls enter 1~5!");
-//            }
-//
-//            System.out.print("Enter staff job position: ");
-//        }
-//    }
-    
-    
-//    private static void CusProductMenu() {
-//        
-//        do {
-//            System.out.printf(" \nProduct Menu \n1. Display all Product\n2. Search Product\n3. Purchase Product\n4. Exit\nEnter your choice > ");
-//            int choice = sc.nextInt();
-//            sc.nextLine();
-//            System.out.printf("\n");
-//            switch (choice) {
-////                case 1 -> cusDisplayAllProduct();
-////                case 2 -> cusSearchProductModule();
-////                case 3 -> cusPurchaseModule();
-////                case 4 -> customerMenu();
-//                default -> System.out.println("\nInvalid Input! Pls enter 1~4!");
-//            }
-//        } while (true);
-//
+
    }
     
     

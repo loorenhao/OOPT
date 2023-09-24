@@ -9,10 +9,10 @@ package oopt;
  * @author USER
  */
 
-public class Member extends Customer {
+public class member extends Customer {
     private int loyaltyPoints;
 
-    public Member(String userId, String userPsw) {
+    public member(String userId, String userPsw) {
         super(userId, userPsw);
         loyaltyPoints = 0;
     }

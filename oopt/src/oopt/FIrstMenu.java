@@ -50,7 +50,7 @@ public class FIrstMenu {
         
         switch (temp) {
                case 1 -> LogIn.LogInStaff();
-               case 2 -> Registration.registerMember();
+               case 2 -> CusMenu.cusMenu();
                
         }
     }
