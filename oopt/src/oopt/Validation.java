@@ -22,7 +22,7 @@ public class Validation {
         else return true;
     }
     
-    public static boolean checkPurchaseID(String inputProdID){
+    public static boolean checkProductID(String inputProdID){
           String CusProductFile = "src/data1/product.txt"; // Replace with file path
         try (BufferedReader br = new BufferedReader(new FileReader(CusProductFile))) {
             String line;

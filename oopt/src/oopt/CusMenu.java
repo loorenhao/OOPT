@@ -178,9 +178,9 @@ public class CusMenu {
         System.out.printf("Order Page\n");
         do{
            do {
-                  System.out.printf("Enter ProductID (e.g., P1001) to add to cart > ");
+                  System.out.printf("Enter ProductID (e.g. P1001) to add to cart > ");
                   inputProdID = sc.nextLine(); // Get user input inside the loop
-                  validProdID = Validation.checkPurchaseID(inputProdID); // Check the validity of the entered ProductID
+                  validProdID = Validation.checkProductID(inputProdID); // Check the validity of the entered ProductID
 
            if (!validProdID) { // Check if the ProductID is invalid
              System.out.println("\nInvalid ProductID! Please enter again.\n");
