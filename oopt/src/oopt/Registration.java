@@ -19,8 +19,6 @@ public class Registration {
 
     private static final Scanner sc = new Scanner(System.in);
 
-
-
     public static void registerStaff() {
         // Implement staff registration logic here
         // Prompt the user for staff ID, password, and job position
@@ -101,7 +99,6 @@ public class Registration {
         writeStaffToFile(userId, userPsw, jobPosition, STAFF_FILE);
         System.out.println("Staff registration successful!");
         // Exit the method after successful registration
-        FIrstMenu.menu1();
 
     }
 

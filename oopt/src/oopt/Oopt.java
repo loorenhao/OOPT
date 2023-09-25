@@ -32,14 +32,21 @@ public class Oopt {
     } catch (InterruptedException e) {
             // Handle any exceptions here
     }
-   
     
-    
-        FIrstMenu.menu1();
+    boolean continueUsingSystem = true;
 
+     while (continueUsingSystem) {
+        FIrstMenu.menu1();
+        System.out.print("Do You Want To Continue To Use The System? (yes/no): ");
+        String userInput = sc.next().toLowerCase();
+
+        if (userInput.equals("no")) {
+            continueUsingSystem = false;
+        }
+    
 
    }
     
     
-    
+    }   
 }
