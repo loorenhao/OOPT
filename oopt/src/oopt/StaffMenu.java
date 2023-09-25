@@ -25,17 +25,19 @@ public class StaffMenu {
     public static void staffMenu() {
          int staffMenuSelect;
         do {
-            System.out.printf("\nMain Menu\n1. Staff Details\n2. Product Menu\n3. Modify Product\n4. Exit\n\nEnter your choice > ");
+            System.out.printf("\nMain Menu\n1. Staff Details\n2. Customer Details\n3. Product Menu\n4. Modify Product\n5. Log out\n\nEnter your choice > ");
             staffMenuSelect = sc.nextInt();
             switch (staffMenuSelect) {
-                case 1 -> {//Staff();
+                case 1 -> {Staff.displayStaffDetails();
                 }
-                case 2 -> {StaffProductMenu();
+                case 2 -> {Member.displayMemberDetails();
                 }
-                case 3 -> {ModifyProduct(); 
+                case 3 -> {StaffProductMenu();
                 }
-                case 4 -> FIrstMenu.menu1();
-                default -> System.out.println("\nInvalid Input! Pls enter 1~4!");
+                case 4 -> {ModifyProduct(); 
+                }
+                case 5 -> FIrstMenu.menu1();
+                default -> System.out.println("\nInvalid Input! Pls enter 1~5!");
             }
                     } while (true);
     }

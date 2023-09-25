@@ -13,7 +13,6 @@ import java.util.*;
  */
 public class Registration {
 
-    private static final String filePath = "src/data1/";
     private static final String STAFF_FILE = "src/data1/staff.txt";
     private static final String MEMBER_FILE = "src/data1/member.txt";
 

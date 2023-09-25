@@ -26,18 +26,17 @@ public class CusMenu {
     public static void cusMenu() {
         int cusMenuSelect;
         do {
-            System.out.printf("\nMain Menu\n1. Customer Details\n2. Product Menu\n3. Cart\n4. Checkout\n5. Exit\n\nEnter your choice > "); // 1 > View & Modify CusDetails ;2 > View ProdMenu,Add Prod ;3 > Show & Modify Cart;4 > Make payment;5 > exitprogram/logout
+            System.out.printf("\nMain Menu\n1. Product Menu\n2. Cart\n3. Checkout\n4. Exit\n\nEnter your choice > "); // 1 > View & Modify CusDetails ;2 > View ProdMenu,Add Prod ;3 > Show & Modify Cart;4 > Make payment;5 > exitprogram/logout
             cusMenuSelect = sc.nextInt();
             switch (cusMenuSelect) {
-                case 1 -> {//CustomerDetails(); (kuanhong)
+                
+                case 1 -> {CusProductMenu();
                 }
-                case 2 -> {CusProductMenu();
+                case 2 -> {//Cart(); (renhao)
                 }
-                case 3 -> {//Cart(); (renhao)
+                case 3 -> {//Checkout(); (renhao)
                 }
-                case 4 -> {//Checkout(); (renhao)
-                }
-                case 5 -> FIrstMenu.menu1();
+                case 4 -> FIrstMenu.menu1();
                 default -> System.out.println("\nInvalid Input! Pls enter 1~5!");
             }
                     } while (true);
