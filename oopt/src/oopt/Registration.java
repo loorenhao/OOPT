@@ -6,30 +6,30 @@ package oopt;
 
 import java.io.*;
 import java.util.*;
+
 /**
  *
  * @author Cyborg
  */
 public class Registration {
+
     private static final String filePath = "src/data1/";
     private static final String STAFF_FILE = "src/data1/staff.txt";
     private static final String MEMBER_FILE = "src/data1/member.txt";
 
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        // Your main application logic here
-    }
+
 
     public static void registerStaff() {
         // Implement staff registration logic here
         // Prompt the user for staff ID, password, and job position
-        String userId=null;
-        String userPsw=null;
-        String jobPosition=null;
+        String userId = null;
+        String userPsw = null;
+        String jobPosition = null;
 
-        boolean vali = true;
-        while (vali) {
+        boolean valid = true;
+        while (valid) {
             System.out.print("\nEnter staff user ID (must start with 'ADM' followed by 5 digits): ");
             userId = sc.next();
 
@@ -45,32 +45,64 @@ public class Registration {
                 continue; // Repeat the loop if the user ID already exists
             }
 
-            vali = false;
+            valid = false;
         }
 
-        vali = true;
-        while (vali) {
-            System.out.print("Enter staff password (at least 10 characters): ");
-            userPsw = sc.next();
+        do {
+            System.out.print("Enter staff password (password must have exactly 10 characters): ");
+            userPsw = sc.next(); // Use sc.nextLine() to read the entire line
 
-            // Check if the password is at least 10 characters long
-            if (userPsw.length() < 10) {
-                System.out.println("Password must be at least 10 characters long.");
-                continue; // Repeat the loop if the password is too short
+            // Check if the password is exactly 10 characters long and contains only digits
+            if (userPsw.length() != 10) {
+                System.out.println("Password must be exactly 10 characters long.");
             }
-            vali = false;
+        } while (userPsw.length() != 10);
+
+        // Present a menu for job position selection
+        System.out.println("Select a job position:");
+        System.out.println("1. Cashier");
+        System.out.println("2. Inventory Manager");
+        System.out.println("3. Customer Service Representative");
+        System.out.println("4. Store Manager");
+
+        int choice = 0;
+        while (true) {
+            System.out.print("Enter your choice (1/2/3/4): ");
+            if (sc.hasNextInt()) {
+                choice = sc.nextInt();
+                if (choice >= 1 && choice <= 4) {
+                    break;
+                } else {
+                    System.out.println("Invalid choice. Please enter a valid option.");
+                }
+            } else {
+                System.out.println("Invalid input. Please enter a number (1/2/3/4).");
+                sc.next(); // Consume the invalid input
+            }
         }
 
-        // Prompt the staff member to enter their job position
-        System.out.print("Enter staff job position: ");
-        jobPosition = sc.next();
-
+        // Map the user's choice to a job position
+        switch (choice) {
+            case 1:
+                jobPosition = "Cashier";
+                break;
+            case 2:
+                jobPosition = "Inventory Manager";
+                break;
+            case 3:
+                jobPosition = "Customer Service Representative";
+                break;
+            case 4:
+                jobPosition = "Store Manager";
+                break;
+        }
         // Registration successful
         // Store user data, including job position, in staff.txt
         writeStaffToFile(userId, userPsw, jobPosition, STAFF_FILE);
         System.out.println("Staff registration successful!");
-        // Exit the method after successful registration    
-     
+        // Exit the method after successful registration
+        FIrstMenu.menu1();
+
     }
 
     private static void writeStaffToFile(String userId, String password, String jobPosition, String fileName) {
@@ -108,18 +140,15 @@ public class Registration {
             vali = false;
         }
 
-        vali = true;
-        while (vali) {
-            System.out.print("Enter new password (at least 10 characters): ");
-            userPsw = sc.next();
+        do {
+            System.out.print("Enter member password (password must have exactly 10 characters): ");
+            userPsw = sc.next(); // Use sc.nextLine() to read the entire line
 
-            // Check if the password is at least 10 characters long
-            if (userPsw.length() < 10) {
-                System.out.println("Password must be at least 10 characters long.");
-                continue; // Repeat the loop if the password is too short
+            // Check if the password is exactly 10 characters long and contains only digits
+            if (userPsw.length() != 10) {
+                System.out.println("Password must be exactly 10 characters long.");
             }
-            vali = false;
-        }
+        } while (userPsw.length() != 10);
         // Registration successful
         // Automatically declare loyalty points as 0
 
