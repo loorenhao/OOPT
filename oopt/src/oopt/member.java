@@ -9,15 +9,15 @@ package oopt;
  * @author USER
  */
 
-public class member extends Customer {
+public class Member extends Customer {
     private int loyaltyPoints;
 
-    public member(String userId, String userPsw) {
+    public Member(String userId, String userPsw) {
         super(userId, userPsw);
         loyaltyPoints = 0;
     }
 
-    // Additional methods or properties specific to member users
+    // Additional methods or properties specific to Member users
     public int getLoyaltyPoints() {
         return loyaltyPoints;
     }

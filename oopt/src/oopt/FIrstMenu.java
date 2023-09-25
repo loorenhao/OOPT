@@ -50,7 +50,7 @@ public class FIrstMenu {
         } while (!Validation.CheckMinMax(temp,1,3));
         
         switch (temp) {
-               case 1 -> LogIn.LogInStaff();
+               case 1 -> LogIn.LogInUser();
                case 2 -> CusMenu.cusMenu();
                case 3 -> StaffMenu.staffMenu();     //this is for test output staffMenu
                
