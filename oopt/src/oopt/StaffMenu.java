@@ -28,7 +28,7 @@ public class StaffMenu {
             System.out.printf("\nMain Menu\n1. Staff Details\n2. Product Menu\n3. Modify Product\n4. Exit\n\nEnter your choice > ");
             staffMenuSelect = sc.nextInt();
             switch (staffMenuSelect) {
-                case 1 -> {//StaffDetails(); (kuanhong)
+                case 1 -> {//Staff();
                 }
                 case 2 -> {StaffProductMenu();
                 }
