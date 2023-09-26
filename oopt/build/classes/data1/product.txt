@@ -1,7 +1,7 @@
 P1001|Marker Pen            |stationery|12|8.99|6.99
-P1002|Topvalu A4            |stationery|21|11.9|10.9
-P1003|Management File       |stationery|4|2.5|2.0
-P1004|Artist Brush          |stationery|23|8.9|6.22
+P1002|Topvalu A4            |stationery|21|11.9|13.0
+P1003|Management File       |stationery|12|2.5|2.0
+P1004|Artist Brush          |stationery|23|16.0|6.22
 P1005|Glitter Glue          |stationery|15|17.9|15.0
 P1006|Football              |  sport   |24|81.16|61.22
 P1007|Basketball            |  sport   |30|45.23|40.0

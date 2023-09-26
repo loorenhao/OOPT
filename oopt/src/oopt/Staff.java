@@ -14,16 +14,18 @@ import java.util.*;
 public class Staff extends User {
 
     private static final String STAFF_FILE = "src/data1/staff.txt";
-    private final String Position;
+    private String Position;
 
-    public Staff(String userId, String userPsw, String Position) {
-        super(userId, userPsw);
+
+    public Staff(String Position, String userId, String password) {
+        super(userId, password);
         this.Position = Position;
     }
 
     public String getPosition() {
         return Position;
     }
+    
 
 
     @Override
