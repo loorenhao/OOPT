@@ -207,8 +207,7 @@ public class CusMenu {
                 System.out.println("Product's stock is not enough!\n");
                 }
           }while(addMoreFlag != 1);
-        
-           
+                   
     }
 
           

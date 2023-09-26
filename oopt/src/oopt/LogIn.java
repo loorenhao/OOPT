@@ -13,7 +13,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 //sdfsdsdf
+
 public class LogIn {
+
     public static final String STAFF_FILE = "src/data1/staff.txt";
     public static final String MEMBER_FILE = "src/data1/member.txt";
     private static final Scanner sc = new Scanner(System.in);
@@ -44,15 +46,20 @@ public class LogIn {
                 System.out.println("Member login successful!");
                 // Access member-specific properties like loyalty points if needed
                 int loyaltyPoints = getLoyaltyPoints(userId, MEMBER_FILE);
+                Customer.displayCustLogin(userId, userPsw);
+                System.out.println();
                 CusMenu.cusMenu();
-                return; 
+                return;
             }
         } else if (userId.startsWith("ADM")) {
             // Staff login
             if (authenticateUser(userId, userPsw, STAFF_FILE)) {
                 System.out.println("Staff login successful!");
+                Staff staff = new Staff(userId, userPsw);
+                Staff.displayStaffLogin(userId, userPsw);
+                System.out.println();
                 StaffMenu.staffMenu();
-                return; 
+                return;
             }
         } else {
             System.out.println("Invalid user ID format. Please start with 'HGL' or 'ADM'.");
