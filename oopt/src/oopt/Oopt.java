@@ -32,7 +32,7 @@ public class Oopt {
     } catch (InterruptedException e) {
             // Handle any exceptions here
     }
-    
+
     boolean continueUsingSystem = true;
 
      while (continueUsingSystem) {
