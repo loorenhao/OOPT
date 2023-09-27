@@ -13,8 +13,6 @@ import java.util.Scanner;
  */
 public class Oopt {
 
-    public static final String STAFF_FILE = "src/data1/staff.txt";
-    public static final String MEMBER_FILE = "src/data1/member.txt";
     private static final Scanner sc = new Scanner(System.in);
 
     /**
@@ -24,6 +22,7 @@ public class Oopt {
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         FileHandle.checkFile();
+        //Formater.clearScreen();
 
         try {
             Thread.sleep(2); // Sleep for 2 seconds
@@ -31,8 +30,9 @@ public class Oopt {
             // Handle any exceptions here
         }
 
+         
         boolean continueUsingSystem = true;
-
+        
         while (continueUsingSystem) {
             FIrstMenu.menu1();
             boolean isNoError = true;
@@ -55,5 +55,12 @@ public class Oopt {
         }
 
     }
+
+    public static void exit() {
+        System.out.println("TQ using over system");
+        System.exit(0); // 0 indicates a normal, successful termination
+    
+    }
+
 
 }

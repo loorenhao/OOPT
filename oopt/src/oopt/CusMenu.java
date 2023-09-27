@@ -18,7 +18,7 @@ public class CusMenu {
         int cusMenuSelect;
         do {
             System.out.printf("\nMain Menu\n1. Product Menu\n2. Cart\n3. Checkout\n4. Exit\n\nEnter your choice > "); // 1 > View & Modify CusDetails ;2 > View ProdMenu,Add Prod ;3 > Show & Modify Cart;4 > Make payment;5 > exitprogram/logout
-            cusMenuSelect = sc.nextInt();
+            cusMenuSelect = Validation.getIntInput();
             switch (cusMenuSelect) {
 
                 case 1 -> {
@@ -38,10 +38,11 @@ public class CusMenu {
     }
 
     private static void CusProductMenu() {
+        
         int choice;
         do {
             System.out.printf(" \nProduct Menu \n1. Display All Product\n2. Search Product\n3. Purchase Product\n4. Exit\nEnter your choice > ");
-            choice = sc.nextInt();
+            choice = Validation.getIntInput();
             sc.nextLine();
             System.out.printf("\n");
             switch (choice) {

@@ -20,15 +20,17 @@ public class FIrstMenu {
             System.out.println("Do you want to:");
             System.out.println("1. LOG IN");
             System.out.println("2. REGISTER ");
+            System.out.println("3. Exit ");
             System.out.print("CHOICE > ");
             
-            temp =  sc.nextInt();
+            temp =  Validation.getIntInput();
            
-        } while (!Validation.CheckMinMax(temp,1,2));
+        } while (!Validation.CheckMinMax(temp,1,3));
         
           switch (temp) {
                 case 1 -> loginMenu();
                 case 2 -> registerMenu();
+                case 3 -> Oopt.exit();
         }
           
     }
@@ -44,7 +46,7 @@ public class FIrstMenu {
             System.out.println("2. GUEST");
             System.out.print("CHOICE > ");
             
-            temp =  sc.nextInt();
+            temp =  Validation.getIntInput();
            
         } while (!Validation.CheckMinMax(temp,1,3));
         
@@ -66,7 +68,7 @@ public class FIrstMenu {
             System.out.println("2. MEMBER");
             System.out.print("CHOICE > ");
             
-            temp = sc.nextInt();
+            temp = Validation.getIntInput();
             
            
         } while (!Validation.CheckMinMax(temp,1,2));

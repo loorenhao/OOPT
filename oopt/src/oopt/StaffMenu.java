@@ -17,7 +17,7 @@ public class StaffMenu {
          int staffMenuSelect;
         do {
             System.out.printf("\nMain Menu\n1. Staff Details\n2. Customer Details\n3. Product Menu\n4. Modify Product\n5. Log out\n\nEnter your choice > ");
-            staffMenuSelect = sc.nextInt();
+            staffMenuSelect = Validation.getIntInput();
             switch (staffMenuSelect) {
                 case 1 -> {Staff.displayStaffDetails();
                 }
@@ -37,7 +37,7 @@ public class StaffMenu {
         int choice;
         do {
             System.out.printf(" \nProduct Menu \n1. Display All Product\n2. Search Product\n3. Exit\nEnter your choice > ");
-            choice = sc.nextInt();
+            choice = Validation.getIntInput();
             sc.nextLine();
             System.out.printf("\n");
             switch (choice) {

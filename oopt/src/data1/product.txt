@@ -1,4 +1,4 @@
-P1001|Marker Pen            |stationery|12|8.99|6.99
+P1001|Marker Pen            |stationery|32|8.99|6.99
 P1002|Topvalu A4            |stationery|21|11.9|13.0
 P1003|Management File       |stationery|12|2.5|2.0
 P1004|Artist Brush          |stationery|23|16.0|6.22

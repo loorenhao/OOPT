@@ -231,7 +231,7 @@ public static void CusDisplayAllProduct() {
             
             validProdQty = Validation.checkQuantity(inputProdID, inputProdQty);
             if (validProdQty) {
-                //addToCart(); (renhao)
+                //Cart.addItem();
                 System.out.printf("\nProduct is added to the cart!\nAdd more product? (1 = Yes / 2 = No) > ");
                 choice = sc.nextInt();
                 sc.nextLine();

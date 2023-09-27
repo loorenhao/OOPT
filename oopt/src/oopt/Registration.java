@@ -66,7 +66,7 @@ public class Registration {
         while (true) {
             System.out.print("Enter your choice (1/2/3/4): ");
             if (sc.hasNextInt()) {
-                choice = sc.nextInt();
+                choice = Validation.getIntInput();
                 if (choice >= 1 && choice <= 4) {
                     break;
                 } else {
@@ -80,18 +80,10 @@ public class Registration {
 
         // Map the user's choice to a job position
         switch (choice) {
-            case 1:
-                jobPosition = "Cashier";
-                break;
-            case 2:
-                jobPosition = "Inventory Manager";
-                break;
-            case 3:
-                jobPosition = "Customer Service Representative";
-                break;
-            case 4:
-                jobPosition = "Store Manager";
-                break;
+            case 1 -> jobPosition = "Cashier";
+            case 2 -> jobPosition = "Inventory Manager";
+            case 3 -> jobPosition = "Customer Service Representative";
+            case 4 -> jobPosition = "Store Manager";
         }
         // Registration successful
         // Store user data, including job position, in staff.txt

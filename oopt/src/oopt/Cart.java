@@ -17,6 +17,12 @@ public class Cart {
     private int prodqty;		 //productQuantity
     private double prodPrice;        //productPricePerUnit
 
+   public Cart(){
+       
+       
+   }
+   
+   
     public Cart(String prodName, String category, int prodqty, double prodPrice, String prodID) {
         this.prodID = prodID;		//prodID = P1001
         this.prodName = prodName;
@@ -69,6 +75,8 @@ public class Cart {
 //    public void addCart(String prodid){
 //        this.prodName=getname();
 //    }
+    
+    
     
     
     

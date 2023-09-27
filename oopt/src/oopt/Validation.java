@@ -40,7 +40,7 @@ public class Validation {
                 input = Integer.parseInt(sc.nextLine());
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input, please try again\n");
+                System.out.println("Invalid input, please try again");
             }
         }
         return input;
