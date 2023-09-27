@@ -184,6 +184,7 @@ public class CusMenu {
         int choice;
         System.out.printf("Order Page\n");
         do {
+            addMoreFlag = 0;
             do {
                 System.out.printf("Enter ProductID (e.g. P1001) to add to cart > ");
                 inputProdID = sc.nextLine(); // Get user input inside the loop
@@ -198,12 +199,12 @@ public class CusMenu {
             do {
                 System.out.printf("Enter Quantity > ");
                 inputProdQty = Validation.getIntInput();
-                sc.nextLine();
             } while (!Validation.CheckMin(inputProdQty,0));
             
             validProdQty = Validation.checkQuantity(inputProdID, inputProdQty);
             if (validProdQty) {
-                //addToCart(); (renhao)
+                //addToCart(); (renhao)\
+                //cart.add();
                 System.out.printf("\nProduct is added to the cart!\nAdd more product? (1 = Yes / 2 = No) > ");
                 choice = sc.nextInt();
                 switch (choice) {

@@ -25,7 +25,7 @@ public class Oopt {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        CheckFile.begin();
+        FileHandle.checkFile();
         
     try {
     Thread.sleep(2); // Sleep for 2 seconds

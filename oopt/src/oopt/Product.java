@@ -20,7 +20,6 @@ public class Product {
         private int prodqty;		 //productQuantity
         private double prodPrice;	 //productPricePerUnit
 	private static int prodNum;
-	
 	//Inventory
 	private double netPrice;          //product批发价/净价
 	
@@ -31,10 +30,9 @@ public Product(){			//空参
 }
 
 
-public Product(String prodName,String category,int prodqty,double prodPrice,double netPrice){
-	prodNum++;	
-	int id = 1000 + prodNum;						
-	this.prodID = "P" + Integer.toString(id);		//prodID = P1001
+public Product(String prodName,String category,int prodqty,double prodPrice,double netPrice,String prodID){
+	prodNum++;						
+	this.prodID =prodID;		//prodID = P1001
 	this.prodName = prodName;
 	this.prodqty = prodqty;
 	this.category = category;
@@ -94,9 +92,10 @@ public void setnetPrice(double netPrice){
  /**
  * @return
  */
+
 public static int getprodNum() {
         return prodNum; 
-	}
+}
     
     
     
