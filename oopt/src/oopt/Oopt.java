@@ -61,6 +61,9 @@ public class Oopt {
         System.exit(0); // 0 indicates a normal, successful termination
     
     }
-
+    
+//    public static void clearData(){
+//        Cart.clear();
+//    }
 
 }

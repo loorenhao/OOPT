@@ -21,8 +21,8 @@ class FileHandle {
     public static final String STAFF_FILE = "src/data1/staff.txt";
     public static final String MEMBER_FILE = "src/data1/member.txt";
     public static final String PRODUCT_FILE = "src/data1/product.txt";
-    private static final Scanner sc = new Scanner(System.in);
-
+     public static final String REPORT_FILE = "src/data1/report.txt";
+    
     public static void checkFile() throws IOException {
         File fileS = new File(PRODUCT_FILE);
 
@@ -71,6 +71,7 @@ class FileHandle {
         // Add strings to the ArrayList
         FName.add(STAFF_FILE);
         FName.add(MEMBER_FILE);
+        FName.add(REPORT_FILE);
 
         // Access and print the elements
         for (String filePath : FName) {

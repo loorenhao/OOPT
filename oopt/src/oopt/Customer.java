@@ -62,5 +62,7 @@ public class Customer extends User {
             System.out.println("Login failed. User ID or password is incorrect.");
         }
     }
+    
+    
 }
 

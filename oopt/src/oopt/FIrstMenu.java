@@ -4,16 +4,17 @@
  */
 package oopt;
 
-import java.util.Scanner;
+
 
 /**
  *
  * @author USER
  */
 public class FIrstMenu {
-    private static final Scanner sc = new Scanner(System.in);
     
     public static void menu1() {
+       
+        cleardata();
         int temp;
         
         do {
@@ -60,8 +61,7 @@ public class FIrstMenu {
     
     
     private static void registerMenu() {
-        int temp;
-        
+        int temp;   
         do {
             System.out.println("\nWhat do you want to register as:");
             System.out.println("1. STAFF");
@@ -77,6 +77,11 @@ public class FIrstMenu {
                case 1 -> Registration.registerStaff();
                case 2 -> Registration.registerMember();
                
-            }
+        }
+    }
+    
+    
+    private static void cleardata(){
+        
     }
 }

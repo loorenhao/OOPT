@@ -4,7 +4,7 @@
  */
 package oopt;
 
-import java.util.Scanner;
+
 
 /**
  *
@@ -12,26 +12,27 @@ import java.util.Scanner;
  */
 public class CusMenu {
 
-    private static final Scanner sc = new Scanner(System.in);
+
+
+
+
 
     public static void cusMenu() {
+        ShoppingCart cart8 = new ShoppingCart();
         int cusMenuSelect;
         do {
-            System.out.printf("\nMain Menu\n1. Product Menu\n2. Cart\n3. Checkout\n4. Exit\n\nEnter your choice > "); // 1 > View & Modify CusDetails ;2 > View ProdMenu,Add Prod ;3 > Show & Modify Cart;4 > Make payment;5 > exitprogram/logout
+            System.out.printf("\nMain Menu\n1. Product Menu\n2. Exit\n\nEnter your choice > "); // 1 > View & Modify CusDetails ;2 > View ProdMenu,Add Prod ;3 > Show & Modify Cart;4 > Make payment;5 > exitprogram/logout
             cusMenuSelect = Validation.getIntInput();
             switch (cusMenuSelect) {
 
                 case 1 -> {
                     CusProductMenu();
                 }
-                case 2 -> {//Cart(); (renhao)
-                }
-                case 3 -> {//Checkout(); (renhao)
-                }
-                case 4 ->
+  
+                case 2 ->
                     FIrstMenu.menu1();
                 default ->
-                    System.out.println("\nInvalid Input! Pls enter 1~5!");
+                    System.out.println("\nInvalid Input! Pls enter 1~2!");
             }
         } while (true);
 
@@ -43,7 +44,6 @@ public class CusMenu {
         do {
             System.out.printf(" \nProduct Menu \n1. Display All Product\n2. Search Product\n3. Purchase Product\n4. Exit\nEnter your choice > ");
             choice = Validation.getIntInput();
-            sc.nextLine();
             System.out.printf("\n");
             switch (choice) {
                 case 1 -> {
@@ -65,8 +65,12 @@ public class CusMenu {
         } while (true);
 
     }
+    
 
-}
+    } 
+
+
+
 
 
 
