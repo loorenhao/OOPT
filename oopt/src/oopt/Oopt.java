@@ -24,10 +24,10 @@ public class Oopt {
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         FileHandle.checkFile();
-        
-    try {
-    Thread.sleep(2); // Sleep for 2 seconds
-    } catch (InterruptedException e) {
+
+        try {
+            Thread.sleep(2); // Sleep for 2 seconds
+        } catch (InterruptedException e) {
             // Handle any exceptions here
         }
 
@@ -36,7 +36,7 @@ public class Oopt {
         while (continueUsingSystem) {
             FIrstMenu.menu1();
             boolean isNoError = true;
-            do {
+            while (!isNoError) {
                 System.out.print("Do You Want To Continue To Use The System? (yes/no): ");
                 String userInput = sc.next().toLowerCase();
 
@@ -50,11 +50,10 @@ public class Oopt {
                     System.out.println("Invalid Input!");
                     isNoError = false;
                 }
-            } while (!isNoError);
+            }
 
         }
 
     }
 
 }
-
