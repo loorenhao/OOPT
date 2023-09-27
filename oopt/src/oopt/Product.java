@@ -4,15 +4,23 @@
  */
 package oopt;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.Scanner;
 
 /**
  *
  * @author USER
  */
 public class Product {
+      private static final Scanner sc = new Scanner(System.in);
     //product info
 	private String prodID;		 //productID
         private String prodName;	 //productName
@@ -20,7 +28,6 @@ public class Product {
         private int prodqty;		 //productQuantity
         private double prodPrice;	 //productPricePerUnit
 	private static int prodNum;
-	
 	//Inventory
 	private double netPrice;          //product批发价/净价
 	
@@ -31,10 +38,9 @@ public Product(){			//空参
 }
 
 
-public Product(String prodName,String category,int prodqty,double prodPrice,double netPrice){
-	prodNum++;	
-	int id = 1000 + prodNum;						
-	this.prodID = "P" + Integer.toString(id);		//prodID = P1001
+public Product(String prodName,String category,int prodqty,double prodPrice,double netPrice,String prodID){
+	prodNum++;						
+	this.prodID =prodID;		//prodID = P1001
 	this.prodName = prodName;
 	this.prodqty = prodqty;
 	this.category = category;
@@ -94,64 +100,443 @@ public void setnetPrice(double netPrice){
  /**
  * @return
  */
+
 public static int getprodNum() {
         return prodNum; 
-	}
+}
+    
+
+public static void CusDisplayAllProduct() {
+        custProdMenuHeading();
+        CusProduct();
+        System.out.printf("╚═══════════╩═══════════════════════════╩═══════════════╩═══════════════╝\nPress enter to continue...");
+        new java.util.Scanner(System.in).nextLine();
+    }
+
+    private static void custProdMenuHeading() {
+        String l1 = "\n╔═══════════╦═══════════════════════════╦═══════════════╦═══════════════╗";
+        String l2 = "\n║ ProductID ║   Product Name            ║    Category   ║ PricePerUnit  ║";
+        String l3 = "\n╠═══════════╬═══════════════════════════╬═══════════════╬═══════════════╣";
+
+        try {
+            System.setOut(new PrintStream(System.out, true, "UTF8"));
+            System.out.println(l1 + l2 + l3);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Oopt.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private static void CusProduct() {
+        String CusProductFile = "src/data1/product.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(CusProductFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length == 6) {
+                    // extract value
+                    String productId = parts[0].trim();
+                    String productName = parts[1].trim();
+                    String category = parts[2].trim();
+                    //int quantity = Integer.parseInt(parts[3].trim());
+                    double price = Double.parseDouble(parts[4].trim());
+                    //double netPrice = Double.parseDouble(parts[5].trim());
+                    //display product details  
+                    System.out.printf("║   %-8s║   %-24s║ %-13s ║     %-10.2f║\n", productId, productName, category, price);     //dont show quantity & netprice
+                } else {
+                    System.out.println("Skipping line: " + line);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading the file: " + e.getMessage());
+        }
+    }
+
+    public static void cusSearchProductModule() {
+        int choice;
+        do {
+            System.out.printf("Search Page\nCategory List\n1. Stationery\n2. Sport\n3. Furniture\n4. Food\n5. Kitchen\nEnter number to search specify product > ");
+            choice = sc.nextInt();
+            sc.nextLine();
+        } while (!Validation.CheckMinMax(choice, 1, 5));
+        cusSearchProductsByCategory(choice);
+
+    }
+
+    private static void cusSearchProductsByCategory(int categoryChoice) {
+        String category;
+
+        switch (categoryChoice) {
+            case 1 ->
+                category = "stationery";
+            case 2 ->
+                category = "sport";
+            case 3 ->
+                category = "furniture";
+            case 4 ->
+                category = "food";
+            case 5 ->
+                category = "kitchen";
+            default -> {
+                return;
+            }
+        }
+
+        System.out.println("Products in the " + category + " category:");
+        String CusProductFile = "src/data1/product.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(CusProductFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length == 6 && parts[2].trim().equalsIgnoreCase(category)) {
+                    // Display product detail
+                    String productId = parts[0].trim();
+                    String productName = parts[1].trim();
+                    double price = Double.parseDouble(parts[4].trim());
+
+                    System.out.printf("Product ID: %-8s | Product Name: %-24s | Price: %.2f%n", productId, productName, price);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading the file: " + e.getMessage());
+        }
+        System.out.printf("\nPress enter to continue...");
+        new java.util.Scanner(System.in).nextLine();
+    }
+
+    public static void cusPurchaseModule() {
+        boolean validProdID;
+        boolean validProdQty;
+        String inputProdID;
+        int inputProdQty;
+        int addMoreFlag = 0;
+        int choice;
+        System.out.printf("Order Page\n");
+        do {
+            do {
+                System.out.printf("Enter ProductID (e.g. P1001) to add to cart > ");
+                inputProdID = sc.nextLine(); 
+                validProdID = Validation.checkProductID(inputProdID); 
+
+                if (!validProdID) { // Check if the ProductID is invalid
+                    System.out.println("\nInvalid ProductID! Please enter again.\n");
+                }
+
+            } while (!validProdID); // loop until ProductID is valid
+            
+            do {
+                System.out.printf("Enter Quantity > ");
+                inputProdQty = Validation.getIntInput();
+            } while (!Validation.CheckMin(inputProdQty,0));
+            
+            validProdQty = Validation.checkQuantity(inputProdID, inputProdQty);
+            if (validProdQty) {
+                //addToCart(); (renhao)
+                System.out.printf("\nProduct is added to the cart!\nAdd more product? (1 = Yes / 2 = No) > ");
+                choice = sc.nextInt();
+                sc.nextLine();
+                switch (choice) {
+                    case 1 -> {
+                        break;
+                    }
+                    case 2 -> {
+                        addMoreFlag = 1;
+                        break;
+                    }
+                    default ->
+                        System.out.println("\nInvalid input!Pls enter 1~2");
+                }
+            } else {
+                System.out.println("Product's stock is not enough!\n");
+            }
+        } while (addMoreFlag != 1);
+    
+}
+    
+    public static void staffDisplayAllProduct(){
+            StaffProdMenuHeading();
+            StaffProduct();
+            System.out.printf("╚═══════════╩═══════════════════════════╩═══════════════╩═══════════════╩═══════════════╩═════════╝\nPress enter to continue...");
+            new java.util.Scanner(System.in).nextLine();
+    }
+    
+    private static void StaffProdMenuHeading(){
+        String l1 = "\n╔═══════════╦═══════════════════════════╦═══════════════╦═══════════════╦═══════════════╦═════════╗";
+        String l2=  "\n║ ProductID ║   Product Name            ║    Category   ║   GrossPrice  ║   NetPrice    ║  Stock  ║";
+        String l3 = "\n╠═══════════╬═══════════════════════════╬═══════════════╬═══════════════╬═══════════════╬═════════╣";
+ 
+        
+        try {
+            System.setOut(new PrintStream(System.out, true, "UTF8"));
+            System.out.println(l1 + l2 + l3);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Oopt.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    private static void StaffProduct() {
+        String StaffProductFile = "src/data1/product.txt"; 
+        try (BufferedReader br = new BufferedReader(new FileReader(StaffProductFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                // Split the line into values using a delimiter (e.g., "|")
+                String[] parts = line.split("\\|");
+                
+                // Ensure that the line has the expected number of parts
+                if (parts.length == 6) {
+                    // extract value
+                    String productId = parts[0].trim();
+                    String productName = parts[1].trim();
+                    String category = parts[2].trim();
+                    int quantity = Integer.parseInt(parts[3].trim());
+                    double price = Double.parseDouble(parts[4].trim());
+                    double netPrice = Double.parseDouble(parts[5].trim());
+                    //display product details  
+                    System.out.printf("║   %-8s║   %-24s║   %-11s ║     %-10.2f║     %-10.2f║    %-3d  ║\n", productId, productName, category, price,netPrice,quantity);     // show quantity & netprice
+                } else {
+                    // Handle lines with incorrect formatting, if needed
+                    System.out.println("Skipping line: " + line);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading the file: " + e.getMessage());
+        }
+    }
     
     
+    public static void staffSearchProductModule(){
+        int choice;
+        do{
+        System.out.printf("Search Page\nCategory List\n1. Stationery\n2. Sport\n3. Furniture\n4. Food\n5. Kitchen\nEnter number to search specify product > ");
+        choice = sc.nextInt();
+        sc.nextLine();
+        }while(!Validation.CheckMinMax(choice, 1, 5));
+        staffSearchProductsByCategory(choice);
+        
+        
+    }
     
-  
-//private static void Product1(){
-//    //Product
-//    Product[] product = new Product[100];
-//    //stationery Category
-//    product[Product.getprodNum()] = new Product("Marker Pen            ", "stationery", 12, 8.12, 6.82);
-//    product[Product.getprodNum()] = new Product("Topvalu A4            ", "stationery", 21, 11.9, 10.9);
-//    product[Product.getprodNum()] = new Product("Management File       ", "stationery", 4, 2.50, 2.0);
-//    product[Product.getprodNum()] = new Product("Artist Brush          ", "stationery", 23, 8.90, 6.220);
-//    product[Product.getprodNum()] = new Product("Glitter Glue          ", "stationery", 15, 17.90, 15.00);
-//
-//    //sport Category
-//    product[Product.getprodNum()] = new Product("Football              ", "  sport   ", 24, 81.16, 61.22);
-//    product[Product.getprodNum()] = new Product("Basketball            ", "  sport   ", 30, 45.23, 40.00);
-//    product[Product.getprodNum()] = new Product("Badminton Racquet     ", "  sport   ", 4, 210.64, 190.00);
-//    product[Product.getprodNum()] = new Product("Baseball              ", "  sport   ", 8, 98.23, 90.00);
-//    product[Product.getprodNum()] = new Product("Nike Shoes            ", "  sport   ", 14, 108.97, 100.82);
-//
-//    //furniture Category
-//    product[Product.getprodNum()] = new Product("Dining Table          ", "furniture ", 19, 8.12, 6.82);
-//    product[Product.getprodNum()] = new Product("Sofa Bed              ", "furniture ", 3, 290.64, 250.00);
-//    product[Product.getprodNum()] = new Product("Wood Chair            ", "furniture ", 12, 49.99, 39.82);
-//    product[Product.getprodNum()] = new Product("Wood Table            ", "furniture ", 9, 85.68, 76.15);
-//    product[Product.getprodNum()] = new Product("Curtain               ", "furniture ", 5, 42.32, 36.00);
-//
-//    //food Category
-//    product[Product.getprodNum()] = new Product("Gardenia              ", "  food    ", 19, 2.11, 1.99);
-//    product[Product.getprodNum()] = new Product("Massimo               ", "  food    ", 32, 2.40, 2.00);
-//    product[Product.getprodNum()] = new Product("Cheese Bread          ", "  food    ", 45, 3.99, 3.00);
-//    product[Product.getprodNum()] = new Product("Sushi Onigiri         ", "  food    ", 23, 4.99, 4.98);
-//    product[Product.getprodNum()] = new Product("Chocolate Croissant   ", "  food    ", 14, 2.33, 2.10);
-//
-//    //Kitchen Appliance Category
-//    product[Product.getprodNum()] = new Product("Panasonic Blender     ", " kitchen  ", 13, 95.00, 79.00);
-//    product[Product.getprodNum()] = new Product("Pensonic Rice Cooker  ", " kitchen  ", 2, 79.00, 69.00);
-//    product[Product.getprodNum()] = new Product("Khind Jug Kettle      ", " kitchen  ", 6, 45.00, 39.00);
-//    product[Product.getprodNum()] = new Product("Midea Induction Cooker", " kitchen  ", 10, 120.00, 100.00);
-//    product[Product.getprodNum()] = new Product("Faber Air Fryer       ", " kitchen  ", 3, 229.00, 200.00);
-//
-//    try {
-//        FileWriter fw = new FileWriter("src/data/Product.txt"); // Create the file
-//        //Write the product details to the file
-//        try (PrintWriter pw = new PrintWriter(fw)) {
-//            //Write the product details to the file
-//            for (int i = 0; i < Product.getprodNum(); i++) {
-//                pw.printf(product[i].getprodID() + "|" + product[i].getprodName() + "|"  + product[i].getcategory() + "|"  + product[i].getprodqty() + "|" + product[i].getprodPrice() + "|" + product[i].getnetPrice() + "\n");
-//            }
-//            // Close the PrintWriter
-//        }
-//    } catch (IOException e) {
-//        System.out.println("Error: " + e.getMessage());
-//    }
-//
-//}
+    private static void staffSearchProductsByCategory(int categoryChoice) {
+    String category;
+
+    switch (categoryChoice) {
+        case 1 -> category = "stationery";
+        case 2 -> category = "sport";
+        case 3 -> category = "furniture";
+        case 4 -> category = "food";
+        case 5 -> category = "kitchen";
+        default -> {
+            return; 
+            }
+    }
+
+    System.out.println("Products in the " + category + " category:");
+    String StaffProductFile = "src/data1/product.txt"; 
+    try (BufferedReader br = new BufferedReader(new FileReader(StaffProductFile))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            String[] parts = line.split("\\|");
+            if (parts.length == 6 && parts[2].trim().equalsIgnoreCase(category)) {
+                // Display product detail
+                String productId = parts[0].trim();
+                String productName = parts[1].trim();
+                int quantity = Integer.parseInt(parts[3].trim());
+                double price = Double.parseDouble(parts[4].trim());
+                double netPrice = Double.parseDouble(parts[5].trim());
+                System.out.printf("Product ID: %-5s | Product Name: %-24s | GrossPrice: %-6.2f | NetPrice: %-6.2f | Stock: %-3d\n", productId, productName, price,netPrice,quantity);
+            }
+        }
+    } catch (IOException e) {
+        System.out.println("Error reading the file: " + e.getMessage());
+    }
+    System.out.printf("\nPress enter to continue...");
+            new java.util.Scanner(System.in).nextLine();
+}
+       
+    public static void ModifyProduct(){
+        int choice;
+        do{
+        System.out.printf("\nModify Product\n1. Update Stock\n2. Update GrossPrice\n3. Update NetPrice\n4. Exit\nEnter your choice > ");
+        choice = sc.nextInt();
+        sc.nextLine();
+        
+        switch(choice){
+            case 1 -> StaffUpdateStock();
+            case 2 -> StaffUpdateGrossPrice();
+            case 3 -> StaffUpdateNetPrice();
+            case 4 -> {return;}
+            default -> System.out.println("\nInvalid Input! Pls enter 1~4!"); 
+    }
+        }while(true);
+    }
+    private static void StaffUpdateStock(){
+        boolean validProdID;
+        String inputProdID;
+        int newStockQuantity;
+       
+        do{
+        System.out.printf("\nUpdate Stock\nEnter ProductID (e.g. P1001) to update stock > ");
+        inputProdID = sc.nextLine();
+        validProdID = Validation.checkProductID(inputProdID);
+        
+        if(!validProdID){
+            System.out.println("\nInvalid ProductID! Please enter again.\n");}
+        }while(!validProdID);
+        
+        do{
+        System.out.printf("Enter new stock quantity (maximum 999)> ");
+        newStockQuantity = sc.nextInt();
+        sc.nextLine();
+        if(newStockQuantity >= 0 && newStockQuantity <= 999){
+            break;
+        }else 
+            System.out.printf("\nInvalid Input! Pls enter 0~999!\n");
+        }while(true);
+        String productFilePath = "src/data1/product.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(productFilePath))) {
+            StringBuilder updatedContent = new StringBuilder();
+            String line;
+            
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\|");
+
+                if (parts.length == 6) {
+                    String productID = parts[0].trim();
+
+                    if (productID.equals(inputProdID)) {
+                        parts[3] = Integer.toString(newStockQuantity);
+                    }
+                    
+                    String updatedLine = String.join("|", parts);
+                    updatedContent.append(updatedLine).append("\n");
+                } else {
+                    updatedContent.append(line).append("\n");
+                }
+            }
+            
+            
+            try (PrintWriter writer = new PrintWriter(new FileWriter(productFilePath))) {
+                writer.print(updatedContent.toString());
+            }
+
+            System.out.println("Stock updated successfully!");
+        } catch (IOException e) {
+            System.out.println("Error updating stock: " + e.getMessage());
+        }
+        }
+    
+
+    private static void StaffUpdateGrossPrice(){
+        boolean validProdID;
+        String inputProdID;
+        double newGrossPrice;
+       
+        do{
+        System.out.printf("\nUpdate Gross Price\nEnter ProductID (e.g. P1001) to update Gross Price > ");
+        inputProdID = sc.nextLine();
+        validProdID = Validation.checkProductID(inputProdID);
+        
+        if(!validProdID){
+        System.out.println("\nInvalid ProductID! Please enter again.\n");}
+        }while(!validProdID);
+        
+        do{
+        System.out.printf("Enter new Gross Price > ");
+        newGrossPrice = sc.nextDouble();
+        sc.nextLine();
+        if(newGrossPrice >= 0.01 ){
+            break;
+        }else 
+            System.out.printf("\nInvalid Input! Pls enter price above 0.01!\n");
+        }while(true);
+        String productFilePath = "src/data1/product.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(productFilePath))) {
+            StringBuilder updatedContent = new StringBuilder();
+            String line;
+            
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\|");
+
+                if (parts.length == 6) {
+                    String productID = parts[0].trim();
+
+                    if (productID.equals(inputProdID)) {
+                        parts[4] = Double.toString(newGrossPrice);
+                    }
+                    
+                    String updatedLine = String.join("|", parts);
+                    updatedContent.append(updatedLine).append("\n");
+                } else {
+                    updatedContent.append(line).append("\n");
+                }
+            }
+            
+            
+            try (PrintWriter writer = new PrintWriter(new FileWriter(productFilePath))) {
+                writer.print(updatedContent.toString());
+            }
+
+            System.out.println("Gross Price updated successfully!");
+        } catch (IOException e) {
+            System.out.println("Error updating stock: " + e.getMessage());
+        }
+    }
+    
+    private static void StaffUpdateNetPrice(){
+        boolean validProdID;
+        String inputProdID;
+        double newNetPrice;
+       
+        do{
+        System.out.printf("\nUpdate Net Price\nEnter ProductID (e.g. P1001) to update Net Price > ");
+        inputProdID = sc.nextLine();
+        validProdID = Validation.checkProductID(inputProdID);
+        
+        if(!validProdID){
+        System.out.println("\nInvalid ProductID! Please enter again.\n");}
+        }while(!validProdID);
+        
+        do{
+        System.out.printf("Enter new Net Price > ");
+        newNetPrice = sc.nextDouble();
+        sc.nextLine();
+        if(newNetPrice >= 0.01 ){
+            break;
+        }else 
+            System.out.printf("\nInvalid Input! Pls enter price above 0.01!\n");
+        }while(true);
+        String productFilePath = "src/data1/product.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(productFilePath))) {
+            StringBuilder updatedContent = new StringBuilder();
+            String line;
+            
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\|");
+
+                if (parts.length == 6) {
+                    String productID = parts[0].trim();
+
+                    if (productID.equals(inputProdID)) {
+                        parts[5] = Double.toString(newNetPrice);
+                    }
+                    
+                    String updatedLine = String.join("|", parts);
+                    updatedContent.append(updatedLine).append("\n");
+                } else {
+                    updatedContent.append(line).append("\n");
+                }
+            }
+            
+            
+            try (PrintWriter writer = new PrintWriter(new FileWriter(productFilePath))) {
+                writer.print(updatedContent.toString());
+            }
+
+            System.out.println("Net Price updated successfully!");
+        } catch (IOException e) {
+            System.out.println("Error updating stock: " + e.getMessage());
+        }
+    }
+    
 }

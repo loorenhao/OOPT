@@ -80,7 +80,6 @@ public class Validation {
             }
         } catch (IOException e) {
             System.out.println("Error reading the file: " + e.getMessage());
-            return false; // An error occurred while reading the file
         }
         return false;
     }
