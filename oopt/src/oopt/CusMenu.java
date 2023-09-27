@@ -4,16 +4,8 @@
  */
 package oopt;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -55,13 +47,13 @@ public class CusMenu {
             System.out.printf("\n");
             switch (choice) {
                 case 1 -> {
-                    CusDisplayAllProduct();
+                    Product.CusDisplayAllProduct();
                 }
                 case 2 -> {
-                    cusSearchProductModule();
+                    Product.cusSearchProductModule();
                 }
                 case 3 -> {
-                    cusPurchaseModule();
+                    Product.cusPurchaseModule();
                 }
                 case 4 -> {
                     return;
@@ -74,34 +66,10 @@ public class CusMenu {
 
     }
 
-    private static void CusDisplayAllProduct() {
-        custProdMenuHeading();
-        CusProduct();
-        System.out.printf("╚═══════════╩═══════════════════════════╩═══════════════╩═══════════════╝\nPress enter to continue...");
-        new java.util.Scanner(System.in).nextLine();
-    }
-
-    private static void custProdMenuHeading() {
-        String l1 = "\n╔═══════════╦═══════════════════════════╦═══════════════╦═══════════════╗";
-        String l2 = "\n║ ProductID ║   Product Name            ║    Category   ║ PricePerUnit  ║";
-        String l3 = "\n╠═══════════╬═══════════════════════════╬═══════════════╬═══════════════╣";
-
-        try {
-            System.setOut(new PrintStream(System.out, true, "UTF8"));
-            System.out.println(l1 + l2 + l3);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Oopt.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
 
     }
 
-    private static void CusProduct() {
-        String CusProductFile = "src/data1/product.txt";
-        try (BufferedReader br = new BufferedReader(new FileReader(CusProductFile))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                // Split the line into values using a delimiter (e.g., "|")
-                String[] parts = line.split("\\|");
 
                 // Ensure that the line has the expected number of parts
                 if (parts.length == 6) {

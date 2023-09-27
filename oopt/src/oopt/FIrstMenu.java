@@ -42,7 +42,6 @@ public class FIrstMenu {
             System.out.println("\nWhat do you want to log in as:");
             System.out.println("1. STAFF/CUSTOMER");
             System.out.println("2. GUEST");
-            System.out.println("3. testouput staffmenu");
             System.out.print("CHOICE > ");
             
             temp =  sc.nextInt();
@@ -52,7 +51,6 @@ public class FIrstMenu {
         switch (temp) {
                case 1 -> LogIn.LogInUser();
                case 2 -> CusMenu.cusMenu();
-               case 3 -> StaffMenu.staffMenu();     //this is for test output staffMenu
                
         }
     }

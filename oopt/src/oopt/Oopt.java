@@ -4,17 +4,15 @@
  */
 package oopt;
 
-
 import java.io.IOException;
 import java.util.Scanner;
-
 
 /**
  *
  * @author USER
  */
 public class Oopt {
-    
+
     public static final String STAFF_FILE = "src/data1/staff.txt";
     public static final String MEMBER_FILE = "src/data1/member.txt";
     private static final Scanner sc = new Scanner(System.in);
@@ -31,22 +29,32 @@ public class Oopt {
     Thread.sleep(2); // Sleep for 2 seconds
     } catch (InterruptedException e) {
             // Handle any exceptions here
+        }
+
+        boolean continueUsingSystem = true;
+
+        while (continueUsingSystem) {
+            FIrstMenu.menu1();
+            boolean isNoError = true;
+            do {
+                System.out.print("Do You Want To Continue To Use The System? (yes/no): ");
+                String userInput = sc.next().toLowerCase();
+
+                if (userInput.equals("no")) {
+                    continueUsingSystem = false;
+                    isNoError = true;
+                } else if (userInput.equals("yes")) {
+                    continueUsingSystem = true;
+                    isNoError = true;
+                } else {
+                    System.out.println("Invalid Input!");
+                    isNoError = false;
+                }
+            } while (!isNoError);
+
+        }
+
     }
 
-    boolean continueUsingSystem = true;
-
-     while (continueUsingSystem) {
-        FIrstMenu.menu1();
-        System.out.print("Do You Want To Continue To Use The System? (yes/no): ");
-        String userInput = sc.next().toLowerCase();
-
-        if (userInput.equals("no")) {
-            continueUsingSystem = false;
-        }
-    
-
-   }
-    
-    
-    }   
 }
+
