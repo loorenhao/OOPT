@@ -28,7 +28,7 @@ public class Registration {
         boolean valid = true;
         while (valid) {
             System.out.print("\nEnter staff user ID (must start with 'ADM' followed by 5 digits): ");
-            userId = sc.next();
+            userId = sc.nextLine();
 
             // Check if the user ID starts with 'ADM' and is followed by 5 digits
             if (!userId.matches("ADM\\d{5}")) {
@@ -47,7 +47,7 @@ public class Registration {
 
         do {
             System.out.print("Enter staff password (password must have exactly 10 characters): ");
-            userPsw = sc.next(); // Use sc.nextLine() to read the entire line
+            userPsw = sc.nextLine(); // Use sc.nextLine() to read the entire line
 
             // Check if the password is exactly 10 characters long and contains only digits
             if (userPsw.length() != 10) {
@@ -119,7 +119,7 @@ public class Registration {
         boolean vali = true;
         while (vali) {
             System.out.print("Enter member user ID (must start with 'HGL' followed by 5 digits): ");
-            userId = sc.next();
+            userId = sc.nextLine();
 
             // Check if the user ID starts with 'HGL' and is followed by 5 digits
             if (!userId.matches("HGL\\d{5}")) {
@@ -138,7 +138,7 @@ public class Registration {
 
         do {
             System.out.print("Enter member password (password must have exactly 10 characters): ");
-            userPsw = sc.next(); // Use sc.nextLine() to read the entire line
+            userPsw = sc.nextLine(); // Use sc.nextLine() to read the entire line
 
             // Check if the password is exactly 10 characters long and contains only digits
             if (userPsw.length() != 10) {

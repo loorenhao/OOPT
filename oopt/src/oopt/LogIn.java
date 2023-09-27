@@ -38,7 +38,7 @@ public class LogIn {
         }
 
         System.out.print("Enter password: ");
-        userPsw = sc.next();
+        userPsw = sc.nextLine();
 
         if (userId.startsWith("HGL")) {
             // Member login
