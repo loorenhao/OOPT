@@ -27,7 +27,7 @@ public class LogIn {
         boolean valid = true;
         while (valid) {
             System.out.print("Enter user ID: ");
-            userId = sc.next();
+            userId = sc.nextLine();
 
             // Check if the user ID starts with 'HGL' or 'ADM' and is followed by 5 digits
             if (userId.matches("HGL\\d{5}") || userId.matches("ADM\\d{5}")) {
@@ -38,7 +38,7 @@ public class LogIn {
         }
 
         System.out.print("Enter password: ");
-        userPsw = sc.next();
+        userPsw = sc.nextLine();
 
         if (userId.startsWith("HGL")) {
             // Member login
