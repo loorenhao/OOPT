@@ -1,21 +1,23 @@
-P1001|Marker Pen            |stationery|31|8.99|6.99
-P1002|Topvalu A4            |stationery|21|11.9|13.0
-P1003|Management File       |stationery|12|2.5|2.0
+P1001|Marker Pen            |stationery|13|8.99|6.99
+P1002|Topvalu A4            |stationery|10|12.5|13.0
+P1003|Management File       |stationery|0|2.5|2.0
 P1004|Artist Brush          |stationery|23|16.0|6.22
 P1005|Glitter Glue          |stationery|15|17.9|15.0
 P1006|Football              |  sport   |24|81.16|61.22
 P1007|Basketball            |  sport   |30|45.23|40.0
 P1008|Badminton Racquet     |  sport   |4|210.64|190.0
-P1009|Baseball              |  sport   |8|98.23|90.0
+P1009|Baseball              |  sport   |1|98.23|90.0
 P1010|Nike Shoes            |  sport   |14|108.97|100.82
 P1011|Dining Table          |furniture |19|8.12|6.82
-P1012|Sofa Bed              |furniture |3|290.64|250.0
+P1012|Sofa Bed              |furniture |2|290.64|250.0
 P1013|Wood Chair            |furniture |12|49.99|39.82
 P1014|Wood Table            |furniture |9|85.68|76.15
 P1015|Curtain               |furniture |5|42.32|36.0
 P1016|Gardenia              |  food    |19|2.11|1.99
 P1017|Massimo               |  food    |30|2.4|2.0
 P1018|Cheese Bread          |  food    |43|3.99|3.0
+P1017|Massimo               |  food    |32|2.4|2.0
+P1018|Cheese Bread          |  food    |40|3.99|3.0
 P1019|Sushi Onigiri         |  food    |23|4.99|4.98
 P1020|Chocolate Croissant   |  food    |14|2.33|2.1
 P1021|Panasonic Blender     | kitchen  |13|95.0|79.0
