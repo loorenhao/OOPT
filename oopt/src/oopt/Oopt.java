@@ -63,9 +63,6 @@ public class Oopt {
     
     }
     
-//    public static void clearData(){
-//        Cart.clear();
-//    }
 
     public static void logo() {
         System.out.printf("""

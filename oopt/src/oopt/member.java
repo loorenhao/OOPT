@@ -22,6 +22,7 @@ public class Member extends Customer {
         super(userId, userPsw);
         this.loyaltyPoints = loyaltyPoints;
     }
+    
 
     // Additional methods or properties specific to Member users
     public int getLoyaltyPoints() {

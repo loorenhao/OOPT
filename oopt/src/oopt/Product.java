@@ -115,9 +115,9 @@ public class Product {
     }
 
     private static void custProdMenuHeading() {
-        String l1 = "\n╔═══════════╦═══════════════════════════╦═══════════════╦═══════════════╗";
-        String l2 = "\n║ ProductID ║   Product Name            ║    Category   ║ PricePerUnit  ║";
-        String l3 = "\n╠═══════════╬═══════════════════════════╬═══════════════╬═══════════════╣";
+        String l1 = "\n╔══════════════╦═════════════════════════════════╦══════════════════╦══════════════════╗";
+        String l2 = "\n║ ProductI  ║   Product Name            ║    Category   ║ PricePerUnit  ║";
+        String l3 = "\n╠══════════════╬═════════════════════════════════╬══════════════════╬══════════════════╣";
 
         try {
             System.setOut(new PrintStream(System.out, true, "UTF8"));
@@ -300,38 +300,6 @@ public class Product {
 
         int point = (int) (total2 / 5);
         System.out.printf("\nYou get %d of Loyalthy point", point);
-
-        
-//        String productFilePath = "src/data1/report.txt";
-//        String patternToMatch = "RM\\d+\\.\\d{2}"; // Regular expression to match "RM" followed by one or more digits
-//        try (BufferedReader br = new BufferedReader(new FileReader(productFilePath))) {
-//            double finalttlamm = 0;
-//            Pattern pattern = Pattern.compile(patternToMatch);
-//            String line;
-//
-//            while ((line = br.readLine()) != null) {
-//                Matcher matcher = pattern.matcher(line);
-//                while (matcher.find()) {
-//                    String matchedValue = matcher.group();
-//
-//                   
-//                    finalttlamm = Double.parseDouble(matchedValue);
-//                    finalttlamm +=ttlamm;
-//                     System.out.println("Error updating report: " + finalttlamm);
-//                    try (PrintWriter writer = new PrintWriter(new FileWriter(productFilePath))) {
-//                        writer.print(Double.toString(finalttlamm));
-//                            
-//                    } catch (IOException e) {
-//                        System.out.println("Error updating report: " + e.getMessage());
-//                    }
-//                }
-//                // Check if the line contains any stop words
-//
-//            }
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
 
    
     }

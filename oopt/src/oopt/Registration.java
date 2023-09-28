@@ -65,17 +65,12 @@ public class Registration {
         int choice = 0;
         while (true) {
             System.out.print("Enter your choice (1/2/3/4): ");
-            if (sc.hasNextInt()) {
+            
                 choice = Validation.getIntInput();
                 if (choice >= 1 && choice <= 4) {
                     break;
-                } else {
-                    System.out.println("Invalid choice. Please enter a valid option.");
                 }
-            } else {
-                System.out.println("Invalid input. Please enter a number (1/2/3/4).");
-                sc.next(); // Consume the invalid input
-            }
+  
         }
 
         // Map the user's choice to a job position
