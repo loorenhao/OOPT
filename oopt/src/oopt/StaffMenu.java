@@ -38,8 +38,7 @@ public class StaffMenu {
         do {
             System.out.printf(" \nProduct Menu \n1. Display All Product\n2. Search Product\n3. Exit\nEnter your choice > ");
             choice = Validation.getIntInput();
-            sc.nextLine();
-            System.out.printf("\n");
+
             switch (choice) {
                 case 1 -> {Product.staffDisplayAllProduct();
                 }

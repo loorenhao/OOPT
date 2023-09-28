@@ -260,6 +260,7 @@ public class Product {
                 Cart cart3 = new Cart(inputProdID, inputProdQty, prodName, category, price);
                 cart7.addToCart(cart3);
                 cart7.displayCart();
+                reduceStock(inputProdID,inputProdQty);
                 ttlamm += inputProdQty;
                 System.out.printf("\nProduct is added to the cart!\nAdd more product? (1 = Yes / 2 = No) > ");
                 choice = Validation.getIntInput();
@@ -331,7 +332,7 @@ public class Product {
 //            e.printStackTrace();
 //        }
 
-    reduceStock(inputProdID,inputProdQty);
+   
     }
     
      private static void reduceStock(String prodID,int qty) {
