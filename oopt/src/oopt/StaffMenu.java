@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @author User
  */
 public class StaffMenu {
-    private static final Scanner sc = new Scanner(System.in);
+
     
     public static void staffMenu() {
          int staffMenuSelect;
