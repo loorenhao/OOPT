@@ -288,7 +288,8 @@ public class Product {
 
         // Format and display the current date and time
         String formattedDateTime = currentDateTime.format(formatter);
-        System.out.println("Current Date and Time : " + formattedDateTime);
+        Oopt.logo();
+        System.out.println("\n\nCurrent Date and Time : " + formattedDateTime);
 
         //start payment 
         cart7.displayCart();

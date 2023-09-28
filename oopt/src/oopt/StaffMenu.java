@@ -4,8 +4,6 @@
  */
 package oopt;
 
-import java.util.Scanner;
-
 /**
  *
  * @author User

@@ -26,7 +26,7 @@ public class LogIn {
 
         boolean valid = true;
         while (valid) {
-            System.out.print("Enter user ID: ");
+            System.out.print("Enter Staff/Member's user ID: ");
             userId = sc.nextLine();
 
             // Check if the user ID starts with 'HGL' or 'ADM' and is followed by 5 digits
