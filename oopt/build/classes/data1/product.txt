@@ -14,8 +14,8 @@ P1013|Wood Chair            |furniture |12|49.99|39.82
 P1014|Wood Table            |furniture |9|85.68|76.15
 P1015|Curtain               |furniture |5|42.32|36.0
 P1016|Gardenia              |  food    |19|2.11|1.99
-P1017|Massimo               |  food    |32|2.4|2.0
-P1018|Cheese Bread          |  food    |45|3.99|3.0
+P1017|Massimo               |  food    |30|2.4|2.0
+P1018|Cheese Bread          |  food    |43|3.99|3.0
 P1019|Sushi Onigiri         |  food    |23|4.99|4.98
 P1020|Chocolate Croissant   |  food    |14|2.33|2.1
 P1021|Panasonic Blender     | kitchen  |13|95.0|79.0
